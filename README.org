@@ -12,15 +12,15 @@ Copy this file into your load-path and add this line to your /.emacs/ configurat
 ** Usage
 You can define more than one minor mode to the same regular expression pattern:
 #+begin_src emacs-lisp 
-(add-to-list 'auto-minor-mode-alist '(\"\\.js$\" . autopair-mode))
-(add-to-list 'auto-minor-mode-alist '(\"\\.js$\" . auto-fill-mode)
+(add-to-list 'auto-minor-mode-alist '("\\.js$" . autopair-mode))
+(add-to-list 'auto-minor-mode-alist '("\\.js$" . auto-fill-mode)
 #+end_src
 
 Or if you like, you can assign a lambda expression to group all of
 your desired minor modes:
 #+begin_src emacs-lisp
 (add-to-list 'auto-minor-mode-alist
-             '(\"\\.js$\" . (lambda ()
+             '("\\.js$" . (lambda ()
                                 (progn
                                     (autopair-mode 1)
                                     (auto-fill-mode 1)))))
