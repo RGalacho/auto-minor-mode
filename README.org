@@ -1,0 +1,34 @@
+* Auto minor mode
+This file provides the global alist variable /auto-minor-mode-alist/ to activate multiple minor modes according to a filename extension pattern.
+
+Heavily based and inspiring on [[http://stackoverflow.com/a/13946304][Trey Jackson's solution]] to this question over StackOverflow..
+
+** Instalation
+Copy this file into your load-path and add this line to your /.emacs/ configuration file:
+#+begin_src emacs-lisp
+(load "<load-path>/auto-minor-mode.el")
+#+end_src
+
+** Usage
+You can define more than one minor mode to the same regular expression pattern:
+#+begin_src emacs-lisp 
+(add-to-list 'auto-minor-mode-alist '(\"\\.js$\" . autopair-mode))
+(add-to-list 'auto-minor-mode-alist '(\"\\.js$\" . auto-fill-mode)
+#+end_src
+
+Or if you like, you can assign a lambda expression to group all of
+your desired minor modes:
+#+begin_src emacs-lisp
+(add-to-list 'auto-minor-mode-alist
+             '(\"\\.js$\" . (lambda ()
+                                (progn
+                                    (autopair-mode 1)
+                                    (auto-fill-mode 1)))))
+#+end_src
+
+** License
+/auto-minor-mode/ is distributed in the hope that it will be useful
+and is free software; you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free
+Software Foundation; either version 3, or (at your option) any later
+version. See the [[http://opensource.org/licenses/gpl-3.0][GNU General Public License version 3]] for more details.
